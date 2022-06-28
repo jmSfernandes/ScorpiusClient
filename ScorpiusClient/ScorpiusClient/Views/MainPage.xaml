@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ScorpiusClient"
+             xmlns:viewModels="clr-namespace:ScorpiusClient.ViewModels;assembly=ScorpiusClient"
+             x:Class="ScorpiusClient.Views.MainPage">
+    <ContentPage.BindingContext>
+        <viewModels:MainPageViewModel />
+    </ContentPage.BindingContext>
+    <StackLayout>
+        <!-- Place new controls here -->
+        <Label Text="Welcome to Scorpius Client"
+               HorizontalOptions="Center"
+               VerticalOptions="CenterAndExpand" />
+        <ListView ItemsSource="{Binding Items}" />
+        <Entry Placeholder="Enter your subscription topic" Text="{Binding Topic}" />
+        <Button Text="Register Topic" Command="{Binding AddTopic}" 
+                IsEnabled="{Binding Topic,Converter={StaticResource EmptyEntryConverter}}"/>
+    </StackLayout>
+
+</ContentPage>
