@@ -12,6 +12,14 @@ namespace ScorpiusClient.ViewModels;
 public class MainPageViewModel : INotifyPropertyChanged
 {
     private string _topic;
+    private bool _notEmptyList;
+    private ObservableCollection<string> _items;
+
+    public bool NotEmptyList
+    {
+        get => _notEmptyList;
+        set => SetProperty(ref _notEmptyList, value);
+    }
 
     public string Topic
     {
@@ -20,8 +28,13 @@ public class MainPageViewModel : INotifyPropertyChanged
     }
 
     public Command AddTopic { get; }
+    public Command RemoveAllTopics { get; }
 
-    public ObservableCollection<string> Items { get; set; }
+    public ObservableCollection<string> Items
+    {
+        get => _items;
+        set => SetProperty(ref _items, value);
+    }
 
     private IFirebaseService _firebaseService;
 
@@ -30,6 +43,7 @@ public class MainPageViewModel : INotifyPropertyChanged
         _firebaseService = DependencyService.Get<IFirebaseService>(DependencyFetchTarget.NewInstance);
         Items = new ObservableCollection<string>();
         AddTopic = new Command(AddTopicToItems);
+        RemoveAllTopics = new Command(RemoveAllItems);
     }
 
     private void AddTopicToItems()
@@ -44,8 +58,24 @@ public class MainPageViewModel : INotifyPropertyChanged
         _firebaseService.SubscribeToSingleTopic(_topic);
         Items = temp;
         Topic = "";
+        ValidateListSize();
     }
 
+    private void ValidateListSize()
+    {
+        NotEmptyList = Items.Count > 0;
+    }
+
+    private void RemoveAllItems()
+    {
+        if (Items == null || Items.Count == 0)
+            return;
+
+        _firebaseService.UnSubscribeFromMultipleTopics(Items);
+        var temp = new ObservableCollection<string>();
+        Items = temp;
+        ValidateListSize();
+    }
 
     #region INotifyPropertyChanged
 

@@ -3,6 +3,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.Gms.Common;
 using Android.OS;
+using Firebase;
 using ScorpiusClient.Services;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -24,6 +25,8 @@ namespace ScorpiusClient.Droid
                 GoogleApiAvailability.Instance.MakeGooglePlayServicesAvailable(this);
             }
 
+            FirebaseApp.InitializeApp(this);
+            
             Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
             DependencyService.Register<IFirebaseService>();

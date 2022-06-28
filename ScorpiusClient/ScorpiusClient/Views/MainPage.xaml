@@ -17,6 +17,9 @@
         <Entry Placeholder="Enter your subscription topic" Text="{Binding Topic}" />
         <Button Text="Register Topic" Command="{Binding AddTopic}" 
                 IsEnabled="{Binding Topic,Converter={StaticResource EmptyEntryConverter}}"/>
+        <Button Text="Unregister all" Command="{Binding RemoveAllTopics}" 
+                IsEnabled="{Binding NotEmptyList}"/>
+        
     </StackLayout>
 
 </ContentPage>
