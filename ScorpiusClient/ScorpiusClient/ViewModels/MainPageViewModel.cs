@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using ScorpiusClient.Services;
 using Xamarin.Forms;
 
 
@@ -22,9 +23,11 @@ public class MainPageViewModel : INotifyPropertyChanged
 
     public ObservableCollection<string> Items { get; set; }
 
+    private IFirebaseService _firebaseService;
 
     public MainPageViewModel()
     {
+        _firebaseService = DependencyService.Get<IFirebaseService>(DependencyFetchTarget.NewInstance);
         Items = new ObservableCollection<string>();
         AddTopic = new Command(AddTopicToItems);
     }
@@ -38,6 +41,7 @@ public class MainPageViewModel : INotifyPropertyChanged
 
         var temp = Items;
         temp.Add(_topic);
+        _firebaseService.SubscribeToSingleTopic(_topic);
         Items = temp;
         Topic = "";
     }

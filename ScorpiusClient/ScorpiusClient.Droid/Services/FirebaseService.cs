@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using Android.Util;
 using Firebase.Messaging;
+using ScorpiusClient.Droid.Services;
 using ScorpiusClient.Services;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(IFirebaseService))]
+[assembly: Dependency(typeof(FirebaseService))]
 
-namespace ScorpiusClient.Droid.Services;
+namespace ScorpiusClient.Droid.Services{
 
 public class FirebaseService : IFirebaseService
 {
@@ -43,4 +44,5 @@ public class FirebaseService : IFirebaseService
 
         Log.Info(Tag, "Subscribed to new topic: " + topic);
     }
+}
 }
