@@ -4,6 +4,8 @@ A Xamarin.Forms Client application to receive notifications from the [Scorpius G
 This a example of an App that implements the Firebase Cloud Messaging (FCM).
 Which can be used with the ScorpiusGE to receive notification inbound from the FIWARE ecosystem (i.e., ORION subscriptions)
 
+However this can also be used with any other Firebase Server, or with the Firebase Console.
+
 ## Run application
 To run the application use JetBrains Rider or VS 2022.
 
