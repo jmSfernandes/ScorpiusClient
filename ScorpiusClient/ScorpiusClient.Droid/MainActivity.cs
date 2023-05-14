@@ -24,7 +24,7 @@ namespace ScorpiusClient.Droid
             LoadApplication(new App());
 
             CrossScorpiusClient.Current.Init(this);
-            CrossScorpiusClient.Current.SetCallback(o => FirebaseMessageReceiver.OnMessageReceived((RemoteMessage) o));
+            CrossScorpiusClient.Current.SetCallback(FirebaseMessageReceiver.OnMessageReceived);
         }
     }
 }
