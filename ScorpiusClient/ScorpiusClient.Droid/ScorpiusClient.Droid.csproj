@@ -56,8 +56,7 @@
         <Compile Include="MainActivity.cs" />
         <Compile Include="Resources\Resource.Designer.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="Services\FirebaseMessagingReceiverService.cs" />
-        <Compile Include="Services\FirebaseService.cs" />
+        <Compile Include="Services\FirebaseMessageReceiver.cs" />
         <Compile Include="Services\NotificationUtils.cs" />
     </ItemGroup>
     <ItemGroup>

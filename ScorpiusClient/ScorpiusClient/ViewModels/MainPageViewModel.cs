@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using ScorpiusClient.Services;
+using ScorpiusClientLibrary;
 using Xamarin.Forms;
-
 
 namespace ScorpiusClient.ViewModels;
 
@@ -35,12 +34,10 @@ public class MainPageViewModel : INotifyPropertyChanged
         get => _items;
         set => SetProperty(ref _items, value);
     }
-
-    private IFirebaseService _firebaseService;
+    
 
     public MainPageViewModel()
     {
-        _firebaseService = DependencyService.Get<IFirebaseService>(DependencyFetchTarget.NewInstance);
         Items = new ObservableCollection<string>();
         AddTopic = new Command(AddTopicToItems);
         RemoveAllTopics = new Command(RemoveAllItems);
@@ -55,7 +52,9 @@ public class MainPageViewModel : INotifyPropertyChanged
 
         var temp = Items;
         temp.Add(_topic);
-        _firebaseService.SubscribeToSingleTopic(_topic);
+        //_firebaseService.SubscribeToSingleTopic(_topic);
+        CrossScorpiusClient.Current.SubscribeToSingleTopic(_topic);
+
         Items = temp;
         Topic = "";
         ValidateListSize();
@@ -71,7 +70,7 @@ public class MainPageViewModel : INotifyPropertyChanged
         if (Items == null || Items.Count == 0)
             return;
 
-        _firebaseService.UnSubscribeFromMultipleTopics(Items);
+        CrossScorpiusClient.Current.UnSubscribeFromMultipleTopics(Items);
         var temp = new ObservableCollection<string>();
         Items = temp;
         ValidateListSize();

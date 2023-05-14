@@ -4,9 +4,7 @@ using Firebase.Messaging;
 
 namespace ScorpiusClient.Droid.Services
 {
-    [Service]
-    [IntentFilter(new[] {"com.google.firebase.MESSAGING_EVENT"})]
-    public class FirebaseMessagingReceiverService : FirebaseMessagingService
+    public class FirebaseMessageReceiver
     {
         //private const string NewsChannelId = "1";
         //private const string NewsChannelDescription = "Alert";
@@ -14,25 +12,15 @@ namespace ScorpiusClient.Droid.Services
         //private NotificationManager _notificationManager;
         private const string Tag = "MyFirebaseMessagingService";
 
-        public override void OnNewToken(string newToken)
+
+        public static void OnMessageReceived(object message)
         {
-            base.OnNewToken(newToken);
+            var remoteMessage = message as RemoteMessage;
 
-            Log.Info(Tag, "Firebase Token: " + newToken);
-        }
 
-        public override void OnMessageReceived(RemoteMessage remoteMessage)
-        {
-            base.OnMessageReceived(remoteMessage);
-
-            Log.Debug(Tag, "From:    " + remoteMessage.From);
-
-            var name = string.Empty;
-
-            if (remoteMessage.Data.Count > 0)
+            if (remoteMessage?.Data.Count > 0)
             {
-                Log.Debug(Tag, "Message data payload: " + remoteMessage.Data);
-                name = remoteMessage.Data["message"];
+                Log.Debug(Tag, "Message data payload: " + remoteMessage.Data["message"]);
             }
 
 
@@ -40,7 +28,7 @@ namespace ScorpiusClient.Droid.Services
             {
                 var rawPayload = remoteMessage.Data["data"];
                 NotificationUtils.SendNotification(
-                    this,
+                    Application.Context,
                     NotificationUtils.DefaultNotificationTitle,
                     remoteMessage.Data["message"],
                     rawPayload,
@@ -50,7 +38,7 @@ namespace ScorpiusClient.Droid.Services
             if (remoteMessage.Data.ContainsKey("message"))
             {
                 NotificationUtils.SendNotification(
-                    this,
+                    Application.Context,
                     NotificationUtils.DefaultNotificationTitle,
                     remoteMessage.Data["message"],
                     null,
