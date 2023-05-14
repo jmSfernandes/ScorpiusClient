@@ -1,7 +1,6 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using Firebase.Messaging;
 using ScorpiusClient.Droid.Services;
 using ScorpiusClientLibrary;
 using Xamarin.Forms;

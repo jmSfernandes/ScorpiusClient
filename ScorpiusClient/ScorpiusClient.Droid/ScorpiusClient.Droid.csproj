@@ -79,6 +79,9 @@
             <Name>ScorpiusClient</Name>
         </ProjectReference>
     </ItemGroup>
+    <ItemGroup>
+      <Content Include="global-services.local.json" />
+    </ItemGroup>
    
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -1,83 +1,9 @@
 {
   "project_info": {
-    "project_number": "379597462454",
-    "firebase_url": "https://batina-android-81404.firebaseio.com",
-    "project_id": "batina-android-81404",
-    "storage_bucket": "batina-android-81404.appspot.com"
+  
   },
   "client": [
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:379597462454:android:6f16f333fb157fecf67f17",
-        "android_client_info": {
-          "package_name": "com.companyname.ScorpiusClient"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "379597462454-7rc2uqkb0rq09udga3v6rqasn8gmrsm3.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBzxPWGIOMKhrOMT6buijSijsnVtCulIB4"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "379597462454-7rc2uqkb0rq09udga3v6rqasn8gmrsm3.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "379597462454-og33mtn0e0v3qp3bjp152amddl8mpanv.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.socialite.lct.batina"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:379597462454:android:f0350c0f6b91dcecf67f17",
-        "android_client_info": {
-          "package_name": "com.companyname.batinamobile"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "379597462454-7rc2uqkb0rq09udga3v6rqasn8gmrsm3.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBzxPWGIOMKhrOMT6buijSijsnVtCulIB4"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "379597462454-7rc2uqkb0rq09udga3v6rqasn8gmrsm3.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "379597462454-og33mtn0e0v3qp3bjp152amddl8mpanv.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.socialite.lct.batina"
-              }
-            }
-          ]
-        }
-      }
-    }
+    
   ],
   "configuration_version": "1"
 }
